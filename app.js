@@ -1,6 +1,5 @@
 const express = require("express");
 const morgan = require("morgan");
-const { conectionContacts } = require("./src/db/contacts");
 const { contactsRouter } = require("./src/routers");
 require("dotenv").config();
 
@@ -13,9 +12,9 @@ app.use(morgan("tiny"));
 app.get("/", (req, res) => {
   res.end("<h1>Home page<h1>");
 });
-app.get("/about", (req, res) => {
-  res.end("<h1>About page<h1>");
-});
+// app.get("/about", (req, res) => {
+//   res.end("<h1>About page<h1>");
+// });
 
 app.use("/api/contacts", contactsRouter);
 app.use((err, req, res, next) => {
