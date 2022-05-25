@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const { connectDB } = require("./src/db");
 const { contactsRouter } = require("./src/routers");
 require("dotenv").config();
 
@@ -22,13 +23,17 @@ app.use((err, req, res, next) => {
 });
 
 const start = async () => {
-  app.listen(PORT, (err) => {
-    if (err) {
-      console.error(err);
-    }
-
-    console.log(`Server work at port ${PORT}`);
-  });
+  try {
+    await connectDB();
+    app.listen(PORT, (err) => {
+      if (err) {
+        console.error(err);
+      }
+      console.log(`Server work at port ${PORT}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 start();

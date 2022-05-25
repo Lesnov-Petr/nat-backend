@@ -1,3 +1,4 @@
-let listContacts = require("./listContacts");
+const {connectDB} = require("./conection");
+const { Contacts } = require("./contacts/modelContact");
 
-module.exports = listContacts;
+module.exports = { connectDB, Contacts };

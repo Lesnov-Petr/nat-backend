@@ -3,17 +3,17 @@ const router = express.Router();
 const { wrapper } = require("../helpers");
 
 const {
-  getContacts,
-  getContactByID,
-  addContactNew,
-  deleteContactByID,
-} = require("../controllers");
+  getContactsController,
+  getContactByIdController,
+  addContactNewController,
+  deleteContactByIdController,
+} = require("../controllers/Contacts");
 const { addContactValidation } = require("../middlewares");
 
 router
-  .get("/", wrapper(getContacts))
-  .get("/:id", wrapper(getContactByID))
-  .post("/", addContactValidation, wrapper(addContactNew))
-  .delete("/:id", wrapper(deleteContactByID));
+  .get("/", wrapper(getContactsController))
+  .get("/:id", wrapper(getContactByIdController))
+  .post("/", addContactValidation, wrapper(addContactNewController))
+  .delete("/:id", wrapper(deleteContactByIdController));
 
 module.exports = { contactsRouter: router };
