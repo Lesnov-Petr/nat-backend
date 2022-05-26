@@ -1,3 +1,9 @@
-const { wrapper } = require("./apiHelper");
+const { wrapper, errorHandler } = require("./apiHelper");
+const { ValidationError, WrongParametersError } = require("./error");
 
-module.exports = { wrapper };
+module.exports = {
+  wrapper,
+  errorHandler,
+  ValidationError,
+  WrongParametersError,
+};

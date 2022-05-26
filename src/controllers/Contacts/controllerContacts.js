@@ -1,6 +1,9 @@
 const {
   getContacts,
   getContactByID,
+  addContact,
+  deleteContactById,
+  updateContactBiId,
 } = require("../../services/contactsServices");
 
 const getContactsController = async (req, res) => {
@@ -11,24 +14,26 @@ const getContactsController = async (req, res) => {
 const getContactByIdController = async (req, res) => {
   const { id } = req.params;
   const contact = await getContactByID(id);
-  if (!contact) {
-    return res.status(404).json({ message: `contact with ${id} not find` });
-  }
   res.json({ contact, status: "success" });
 };
 
 const addContactNewController = async (req, res) => {
-  // const { name, number } = req.body;
-  // const Contacts = await getCollectionContacts();
-  // await Contacts.insert({ name: name, number: number });
-  // res.json({ status: "success" });
+  const { name, number } = req.body;
+  await addContact({ name, number });
+  res.json({ status: "success" });
 };
 
 const deleteContactByIdController = async (req, res) => {
-  // const { id } = req.params;
-  // const Contacts = await getCollectionContacts();
-  // await Contacts.deleteOne({ _id: new ObjectId(id) });
-  // res.json({ messege: `contact with id ${id} delete` });
+  const { id } = req.params;
+  await deleteContactById(id);
+  res.json({ message: `contact with id ${id} delete` });
+};
+
+const updateContactBiIdController = async (req, res) => {
+  const { id } = req.params;
+  const { name, number } = req.body;
+  await updateContactBiId(id, { name, number });
+  res.json({ message: `Contact with id ${id} update` });
 };
 
 module.exports = {
@@ -36,4 +41,5 @@ module.exports = {
   getContactByIdController,
   addContactNewController,
   deleteContactByIdController,
+  updateContactBiIdController,
 };
