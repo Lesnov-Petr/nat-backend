@@ -11,6 +11,11 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(morgan("tiny"));
+
+app.get("/", (req, res) => {
+  res.end("<h1>This page my future</h1>");
+});
+
 app.use("/api/contacts", contactsRouter);
 app.use(errorHandler);
 
