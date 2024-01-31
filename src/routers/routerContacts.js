@@ -8,7 +8,7 @@ const {
   addContactNewController,
   deleteContactByIdController,
   updateContactBiIdController,
-} = require("../controllers/contacts");
+} = require("../controllers/contact");
 
 router
   .use(middlewareAuth)

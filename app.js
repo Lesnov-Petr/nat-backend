@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
   res.end("<h1>This page my future</h1>");
 });
 
-app.use("/api/contacts", contactsRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/contacts", contactsRouter);
 app.use("/api/specificationFSM", specificationRouterFSM);
 app.use(errorHandler);
 

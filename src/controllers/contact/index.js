@@ -4,7 +4,7 @@ const {
   addContactNewController,
   deleteContactByIdController,
   updateContactBiIdController,
-} = require("./controllerContacts");
+} = require("./contactController");
 
 module.exports = {
   getContactsController,
