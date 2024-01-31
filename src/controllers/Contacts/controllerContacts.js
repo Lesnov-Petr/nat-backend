@@ -4,22 +4,26 @@ const {
   addContact,
   deleteContactById,
   updateContactBiId,
-} = require("../../services/contactsServices");
+} = require("../../services");
 
 const getContactsController = async (req, res) => {
-  const listContacts = await getContacts();
+  const { _id: userID } = req.user;
+
+  const listContacts = await getContacts(userID);
   res.json({ listContacts, status: "success" });
 };
 
 const getContactByIdController = async (req, res) => {
-  const { id } = req.params;
-  const contact = await getContactByID(id);
+  const { id: contactID } = req.params;
+  const { _id: userID } = req.user;
+  const contact = await getContactByID(contactID, userID);
   res.json({ contact, status: "success" });
 };
 
 const addContactNewController = async (req, res) => {
   const { name, number } = req.body;
-  await addContact({ name, number });
+  const { _id } = req.user;
+  await addContact({ name, number }, _id);
   res.json({ status: "success" });
 };
 

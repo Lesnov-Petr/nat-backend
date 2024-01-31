@@ -1,16 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const { wrapper } = require("../helpers");
-const { addContactValidation } = require("../middlewares");
+const { addContactValidation, middlewareAuth } = require("../middlewares");
 const {
   getContactsController,
   getContactByIdController,
   addContactNewController,
   deleteContactByIdController,
   updateContactBiIdController,
-} = require("../controllers/Contacts");
+} = require("../controllers/contacts");
 
 router
+  .use(middlewareAuth)
   .get("/", wrapper(getContactsController))
   .get("/:id", wrapper(getContactByIdController))
   .post("/", addContactValidation, wrapper(addContactNewController))

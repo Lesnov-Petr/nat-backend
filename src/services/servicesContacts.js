@@ -1,22 +1,21 @@
-const { model } = require("mongoose");
-const { Contacts } = require("../../db");
-const { WrongParametersError } = require("../../helpers");
+const { Contacts } = require("../db");
+const { WrongParametersError } = require("../helpers");
 
-const getContacts = async () => {
-  const contacts = await Contacts.find({});
+const getContacts = async (userID) => {
+  const contacts = await Contacts.find({ userID });
   return contacts;
 };
 
-const getContactByID = async (id) => {
-  const contact = await Contacts.findById(id);
+const getContactByID = async (contactID, userID) => {
+  const contact = await Contacts.findOne({ _id: contactID, userID });
   if (!contact) {
     throw new WrongParametersError(`Not found contacts with id ${id}`);
   }
   return contact;
 };
 
-const addContact = async ({ name, number }) => {
-  const contact = new Contacts({ name, number });
+const addContact = async ({ name, number }, userID) => {
+  const contact = new Contacts({ name, number, userID });
   await contact.save();
 };
 

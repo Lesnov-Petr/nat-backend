@@ -12,6 +12,11 @@ const contactSchema = new mongoose.Schema({
     unique: true,
   },
 
+  userID: {
+    type: String,
+    required: true,
+  },
+
   createAt: {
     type: Date,
     default: Date.now(),

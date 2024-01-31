@@ -2,7 +2,11 @@ const morgan = require("morgan");
 const express = require("express");
 const { connectDB } = require("./src/db");
 const { errorHandler } = require("./src/helpers");
-const { contactsRouter } = require("./src/routers");
+const {
+  contactsRouter,
+  authRouter,
+  specificationRouterFSM,
+} = require("./src/routers");
 
 require("dotenv").config();
 
@@ -17,6 +21,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/contacts", contactsRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/specificationFSM", specificationRouterFSM);
 app.use(errorHandler);
 
 const start = async () => {

@@ -1,4 +1,4 @@
-const { ValidationError, WrongParametersError } = require("./error");
+const { CustomError } = require("./error");
 
 const wrapper = (controller) => {
   return (req, res, next) => {
@@ -7,10 +7,7 @@ const wrapper = (controller) => {
 };
 
 const errorHandler = (error, req, res, next) => {
-  if (
-    error instanceof ValidationError ||
-    error instanceof WrongParametersError
-  ) {
+  if (error instanceof CustomError) {
     return res.status(error.status).json({ message: error.message });
   }
 
