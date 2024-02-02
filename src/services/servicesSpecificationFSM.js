@@ -17,6 +17,10 @@ const addSpecificationFSM = async (req) => {
     degreeProduct,
     valueFSM,
   } = req.body;
+  const isOrder = SpecificationFSM.findOne({ order });
+  if (isOrder) {
+    throw new WrongParametersError(`Заказ с номером ${order} существует`);
+  }
   const specificationFSM = new SpecificationFSM({
     order,
     date,
@@ -27,6 +31,7 @@ const addSpecificationFSM = async (req) => {
     degreeProduct,
     valueFSM,
   });
+  console.log(specificationFSM);
   await specificationFSM.save();
 };
 

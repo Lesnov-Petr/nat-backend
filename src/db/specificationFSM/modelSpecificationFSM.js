@@ -4,7 +4,6 @@ const specificationSchemaFSM = new mongoose.Schema({
   date: {
     type: String,
     required: true,
-    unique: true,
   },
   order: {
     type: Number,
@@ -15,37 +14,31 @@ const specificationSchemaFSM = new mongoose.Schema({
   factory: {
     type: String,
     required: true,
-    unique: true,
   },
 
   viewAP: {
     type: String,
     required: true,
-    unique: true,
   },
 
   viewFSM: {
     type: String,
     required: true,
-    unique: true,
   },
 
   volumeProduct: {
     type: Number,
     required: true,
-    unique: true,
   },
 
   degreeProduct: {
     type: Number,
     required: true,
-    unique: true,
   },
 
   valueFSM: {
     type: Number,
     required: true,
-    unique: true,
   },
 
   createAt: {
