@@ -17,10 +17,12 @@ const addSpecificationFSM = async (req) => {
     degreeProduct,
     valueFSM,
   } = req.body;
-  const isOrder = SpecificationFSM.findOne({ order });
+
+  const isOrder = await SpecificationFSM.findOne({ order });
   if (isOrder) {
     throw new WrongParametersError(`Заказ с номером ${order} существует`);
   }
+
   const specificationFSM = new SpecificationFSM({
     order,
     date,
