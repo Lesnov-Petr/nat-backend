@@ -1,4 +1,5 @@
 const morgan = require("morgan");
+const cors = require("cors");
 const express = require("express");
 const { connectDB } = require("./src/db");
 const { errorHandler } = require("./src/helpers");
@@ -13,6 +14,7 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 
