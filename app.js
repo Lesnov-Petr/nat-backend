@@ -1,6 +1,6 @@
 const morgan = require("morgan");
-const cors = require("cors");
 const express = require("express");
+const cors = require("cors");
 const { connectDB } = require("./src/db");
 const { errorHandler } = require("./src/helpers");
 const {
