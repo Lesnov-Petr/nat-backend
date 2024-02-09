@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 
 app.get("/", (req, res) => {
-  res.end("<h1>My future</h1>");
+  res.end("<h1>my future</h1>");
 });
 
 app.use("/api/auth", authRouter);
