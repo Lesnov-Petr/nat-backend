@@ -39,8 +39,10 @@ const addSpecificationFSM = async (req) => {
 };
 
 const delSpecificationFSM = async (id) => {
-  const isOrder = await SpecificationFSM.findById({ _id: id });
-  console.log(isOrder);
+  const isOrder = await SpecificationFSM.findByIdAndRemove({ _id: id });
+  if (!isOrder) {
+    throw new WrongParametersError("Такой спецификации нет");
+  }
 };
 
 module.exports = {
