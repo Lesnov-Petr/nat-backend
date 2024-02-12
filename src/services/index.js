@@ -10,6 +10,7 @@ const {
 const {
   getSpecificatonFSM,
   addSpecificationFSM,
+  delSpecificationFSM,
 } = require("./servicesSpecificationFSM");
 
 module.exports = {
@@ -22,4 +23,5 @@ module.exports = {
   updateContactBiId,
   getSpecificatonFSM,
   addSpecificationFSM,
+  delSpecificationFSM,
 };

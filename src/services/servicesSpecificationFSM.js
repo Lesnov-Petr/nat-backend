@@ -38,4 +38,13 @@ const addSpecificationFSM = async (req) => {
   return specificationFSM;
 };
 
-module.exports = { getSpecificatonFSM, addSpecificationFSM };
+const delSpecificationFSM = async (id) => {
+  const isOrder = await SpecificationFSM.findById({ _id: id });
+  console.log(isOrder);
+};
+
+module.exports = {
+  getSpecificatonFSM,
+  addSpecificationFSM,
+  delSpecificationFSM,
+};
