@@ -9,12 +9,12 @@ const getSpecificationControllerFSM = async (req, res) => {
 const addSpecificationControllerFSM = async (req, res) => {
   const { order } = req.body;
 
-  const idSpecificationFSM = await addSpecificationFSM(req);
+  const newSpecificationFSM = await addSpecificationFSM(req);
 
   res.json({
     status: "success",
     message: `Успешно создан заказ № ${order}`,
-    idSpecificationFSM,
+    newSpecificationFSM,
   });
 };
 

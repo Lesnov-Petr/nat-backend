@@ -35,7 +35,7 @@ const addSpecificationFSM = async (req) => {
   });
 
   await specificationFSM.save();
-  return specificationFSM._id;
+  return specificationFSM;
 };
 
 module.exports = { getSpecificatonFSM, addSpecificationFSM };
