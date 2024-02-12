@@ -33,8 +33,9 @@ const addSpecificationFSM = async (req) => {
     degreeProduct,
     valueFSM,
   });
-  console.log(specificationFSM);
+
   await specificationFSM.save();
+  return specificationFSM._id;
 };
 
 module.exports = { getSpecificatonFSM, addSpecificationFSM };

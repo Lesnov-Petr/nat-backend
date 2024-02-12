@@ -9,9 +9,13 @@ const getSpecificationControllerFSM = async (req, res) => {
 const addSpecificationControllerFSM = async (req, res) => {
   const { order } = req.body;
 
-  await addSpecificationFSM(req);
+  const idSpecificationFSM = await addSpecificationFSM(req);
 
-  res.json({ status: "success", message: `Успешно создан заказ № ${order}` });
+  res.json({
+    status: "success",
+    message: `Успешно создан заказ № ${order}`,
+    idSpecificationFSM,
+  });
 };
 
 module.exports = {
