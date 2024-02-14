@@ -25,7 +25,11 @@ const addSpecificationControllerFSM = async (req, res) => {
 const delSpecificationControllerFSM = async (req, res) => {
   const { id } = req.params;
   await delSpecificationFSM(id);
-  res.json({ status: "success", message: `Спецификация c id ${id} удалена` });
+  res.json({
+    status: "success",
+    id,
+    message: `Спецификация c id ${id} удалена`,
+  });
 };
 
 module.exports = {
