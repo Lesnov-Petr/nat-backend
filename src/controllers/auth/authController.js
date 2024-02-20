@@ -2,9 +2,8 @@ const { token } = require("morgan");
 const { registration, login } = require("../../services");
 
 const registrationController = async (req, res) => {
-  const { login, password, mail } = req.body;
-  console.log(login, password, mail);
-  await registration(login, password, mail);
+  const { email, password } = req.body;
+  await registration(email, password);
   res.json({ message: "success" });
 };
 

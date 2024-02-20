@@ -3,13 +3,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { AuthorizationError } = require("../helpers");
 
-const registration = async (login, password, mail) => {
-  const user = new User({ login, password, mail });
+const registration = async (email, password) => {
+  const user = new User({ email, password });
   await user.save();
 };
 
-const login = async (login, password) => {
-  const user = await User.findOne({ login });
+const login = async (email, password) => {
+  const user = await User.findOne({ email });
 
   if (!user) {
     throw new AuthorizationError(`No user with email ${email} found`);
