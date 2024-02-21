@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { wrapper } = require("../helpers");
-const { middlewareAuthUser } = require("../middlewares");
 const {
   getSpecificationControllerFSM,
   addSpecificationControllerFSM,
