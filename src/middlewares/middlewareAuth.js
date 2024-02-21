@@ -1,22 +1,44 @@
 const jwt = require("jsonwebtoken");
-const { AuthorizationError } = require("../helpers");
+const { AuthorizationError } = require("../helpers/error");
 
 const middlewareAuth = (req, res, next) => {
-  const [tokenType, token] = req.headers["authorization"].split(" ");
-  console.log(tokenType, token);
+  const authHeaders = req.headers["authorization"];
 
-  if (!token) {
+  if (!authHeaders?.startsWith("Bearer ")) {
     next(new AuthorizationError("Please, provide token"));
   }
 
-  try {
-    const user = jwt.decode(token, process.env.JWT_SECRET);
+  const [tokenType, token] = authHeaders.split(" ");
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
+    if (err) {
+      next(new AuthorizationError("invalid token"));
+    }
     req.token = token;
-    req.user = user;
+    req.companyId = decode._id;
+    req.roles = decode.roles;
     next();
-  } catch (error) {
-    next(new AuthorizationError(error));
-  }
+  });
 };
 
-module.exports = { middlewareAuth };
+const middlewareAuthUser = (req, res, next) => {
+  const authHeaders = req.headers["authorization"];
+
+  if (!authHeaders?.startsWith("Bearer ")) {
+    next(new AuthorizationError("Please, provide token"));
+  }
+
+  const [tokenType, token] = authHeaders.split(" ");
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
+    if (err) {
+      next(new AuthorizationError("invalid token"));
+    }
+    req.token = token;
+    req.companyId = decode._id;
+    req.roles = decode.roles;
+    next();
+  });
+};
+
+module.exports = { middlewareAuth, middlewareAuthUser };

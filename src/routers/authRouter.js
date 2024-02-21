@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { wrapper } = require("../helpers");
+const { wrapperAuth } = require("../helpers");
 const {
   registrationController,
   loginController,
+  loginManagerController,
 } = require("../controllers/auth");
 
 router
-  .post("/registration", wrapper(registrationController))
-  .post("/login", wrapper(loginController))
-  .post("/logout", wrapper());
+  .post("/registration", wrapperAuth(registrationController))
+  .post("/login", wrapperAuth(loginController))
+  .post("/logout", wrapperAuth());
 
 module.exports = { authRouter: router };

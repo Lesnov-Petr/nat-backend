@@ -1,8 +1,7 @@
 const { connectDB } = require("./conection");
-const { Contacts } = require("./contacts/modelContact");
-const {
-  SpecificationFSM,
-} = require("./specificationFSM/modelSpecificationFSM");
-const { User } = require("./auth/modelUser");
+const { Contacts } = require("./modelContact");
+const { SpecificationFSM } = require("./modelSpecificationFSM");
+const { User } = require("./modelUser");
+const { Company } = require("./modelCompany");
 
-module.exports = { connectDB, Contacts, User, SpecificationFSM };
+module.exports = { connectDB, Company, Contacts, User, SpecificationFSM };

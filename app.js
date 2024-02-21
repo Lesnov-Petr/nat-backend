@@ -3,9 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const { connectDB } = require("./src/db");
 const { errorHandler } = require("./src/helpers");
+const { middlewareAuth } = require("./src/middlewares");
 const {
-  contactsRouter,
   authRouter,
+  authUserRouter,
+  contactsRouter,
   specificationRouterFSM,
 } = require("./src/routers");
 
@@ -18,13 +20,11 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 
-app.get("/", (req, res) => {
-  res.end("<h1>OK  my future</h1>");
-});
-
 app.use("/api/auth", authRouter);
-app.use("/api/contacts", contactsRouter);
+app.use(middlewareAuth);
+app.use("/api/authUser", authUserRouter);
 app.use("/api/specificationFSM", specificationRouterFSM);
+app.use("/api/contacts", contactsRouter);
 app.use(errorHandler);
 
 const start = async () => {

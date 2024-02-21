@@ -1,29 +1,36 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const userSchema = new mongoose.Schema({
-  email: {
+const companySchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true,
     unique: true,
+  },
+  roles: {
+    type: Object,
+    default: ["User"],
+  },
+  employees: {
+    type: Object,
+    default: [],
   },
   password: {
     type: String,
     required: true,
   },
-
   createAt: {
     type: Date,
     default: Date.now(),
   },
 });
 
-userSchema.pre("save", async function () {
+companySchema.pre("save", async function () {
   if (this.isNew) {
     this.password = await bcrypt.hash(this.password, 10);
   }
 });
 
-const User = mongoose.model("User", userSchema);
+const Company = mongoose.model("Company", companySchema);
 
-module.exports = { User };
+module.exports = { Company };

@@ -26,9 +26,17 @@ class AuthorizationError extends CustomError {
   }
 }
 
+class RolesError extends CustomError {
+  constructor(message) {
+    super(message);
+    this.status = 401;
+  }
+}
+
 module.exports = {
   ValidationError,
   WrongParametersError,
   AuthorizationError,
+  RolesError,
   CustomError,
 };

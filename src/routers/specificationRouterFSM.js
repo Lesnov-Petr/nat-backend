@@ -1,15 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const { wrapper } = require("../helpers");
+const { middlewareAuthUser } = require("../middlewares");
 const {
   getSpecificationControllerFSM,
   addSpecificationControllerFSM,
   delSpecificationControllerFSM,
 } = require("../controllers/specificationFSM");
+const { rolesList } = require("../rolesList/rolesList");
 
 router
-  .get("/", wrapper(getSpecificationControllerFSM))
-  .post("/", wrapper(addSpecificationControllerFSM))
-  .delete("/:id", wrapper(delSpecificationControllerFSM));
+  .get("/", wrapper(getSpecificationControllerFSM, rolesList.User))
+  .post("/", wrapper(addSpecificationControllerFSM, rolesList.Manager))
+  .delete("/:id", wrapper(delSpecificationControllerFSM, rolesList.Manager));
 
 module.exports = { specificationRouterFSM: router };

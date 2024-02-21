@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const { ValidationError } = require("../helpers");
+const { ValidationError } = require("../helpers/error");
 
 const addContactValidation = async (req, res, next) => {
   const schema = Joi.object({

@@ -1,17 +1,29 @@
 const { token } = require("morgan");
-const { registration, login } = require("../../services");
+const { registration, login, loginManager } = require("../../services");
 
 const registrationController = async (req, res) => {
-  const { email, password } = req.body;
-  await registration(email, password);
-  res.json({ message: "success" });
+  const { name, password } = req.body;
+  await registration(name, password);
+  res.status(201).json({ message: `Успешная регистрация ${name}` });
 };
 
 const loginController = async (req, res) => {
-  const { email, password } = req.body;
-  const token = await login(email, password);
-
-  res.json({ message: "login success", token });
+  const { name, password } = req.body;
+  const token = await login(name, password);
+  res.status(200).json({ message: "login success", token });
 };
 
-module.exports = { registrationController, loginController };
+const loginManagerController = async (req, res) => {
+  const token = req.token;
+  const { email, password } = req.body;
+
+  const manager = await loginManager(token, email, password);
+
+  return res.status(200).json({ message: "OK", manager });
+};
+
+module.exports = {
+  registrationController,
+  loginController,
+  loginManagerController,
+};
