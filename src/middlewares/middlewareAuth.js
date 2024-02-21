@@ -24,7 +24,7 @@ const middlewareAuth = (req, res, next) => {
 const middlewareAuthUser = (req, res, next) => {
   const authHeaders = req.headers["authorization"];
 
-  if (!authHeaders?.startsWith("Bearer ")) {
+  if (!authHeaders.startsWith("Bearer ")) {
     next(new AuthorizationError("Please, provide token"));
   }
 
