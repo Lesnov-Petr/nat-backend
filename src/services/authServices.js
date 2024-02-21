@@ -12,6 +12,7 @@ const registration = async (name, password) => {
   const newCompany = new Company({ name, password });
 
   await newCompany.save();
+  return login(name, password);
 };
 
 const login = async (name, password) => {
