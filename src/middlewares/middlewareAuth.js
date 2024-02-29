@@ -2,13 +2,11 @@ const jwt = require("jsonwebtoken");
 const { AuthorizationError } = require("../helpers/error");
 
 const middlewareAuth = (req, res, next) => {
-  const authHeaders = req.headers["authorization"];
+  const [tokenType, token] = req.headers["authorization"].split(" ");
 
-  if (!authHeaders.startsWith("Bearer ")) {
+  if (!token) {
     next(new AuthorizationError("Please, provide token"));
   }
-
-  const [tokenType, token] = authHeaders.split(" ");
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
     if (err) {
@@ -22,13 +20,11 @@ const middlewareAuth = (req, res, next) => {
 };
 
 const middlewareAuthUser = (req, res, next) => {
-  const authHeaders = req.headers["authorization"];
+  const [tokenType, token] = req.headers["authorization"].split(" ");
 
-  if (!authHeaders.startsWith("Bearer ")) {
+  if (!token) {
     next(new AuthorizationError("Please, provide token"));
   }
-
-  const [tokenType, token] = authHeaders.split(" ");
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
     if (err) {
