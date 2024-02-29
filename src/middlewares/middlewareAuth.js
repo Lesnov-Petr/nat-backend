@@ -5,12 +5,12 @@ const middlewareAuth = (req, res, next) => {
   const [tokenType, token] = req.headers["authorization"].split(" ");
 
   if (!token) {
-    next(new AuthorizationError("Please, provide token"));
+    throw new AuthorizationError("Please, provide token");
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
     if (err) {
-      next(new AuthorizationError("invalid token"));
+      throw new AuthorizationError("invalid token");
     }
     req.token = token;
     req.companyId = decode._id;
@@ -23,12 +23,12 @@ const middlewareAuthUser = (req, res, next) => {
   const [tokenType, token] = req.headers["authorization"].split(" ");
 
   if (!token) {
-    next(new AuthorizationError("Please, provide token"));
+    throw new AuthorizationError("Please, provide token");
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
     if (err) {
-      next(new AuthorizationError("invalid token"));
+      throw new AuthorizationError("invalid token");
     }
     req.token = token;
     req.companyId = decode._id;
