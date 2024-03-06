@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   roles: {
     type: Object,
-    default: ["User"],
+    default: ["User", "Manager"],
   },
   companies: {
     type: Object,

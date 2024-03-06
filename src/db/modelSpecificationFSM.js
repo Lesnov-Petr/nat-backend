@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const specificationSchemaFSM = new mongoose.Schema({
-  date: {
-    type: String,
-    required: true,
-  },
   order: {
     type: Number,
     required: true,
-    unique: true,
+  },
+
+  date: {
+    type: String,
+    required: true,
   },
 
   factory: {
@@ -39,6 +39,15 @@ const specificationSchemaFSM = new mongoose.Schema({
   valueFSM: {
     type: Number,
     required: true,
+  },
+
+  companyId: {
+    type: String,
+    required: true,
+  },
+  manager: {
+    type: Object,
+    require: true,
   },
 
   createAt: {

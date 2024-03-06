@@ -13,7 +13,7 @@ const companySchema = new mongoose.Schema({
   },
   employees: {
     type: Object,
-    default: [],
+    default: [{ email: "user@mail.net", roles: ["User"] }],
   },
   password: {
     type: String,

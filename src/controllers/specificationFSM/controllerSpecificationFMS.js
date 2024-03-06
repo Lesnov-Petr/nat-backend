@@ -7,7 +7,8 @@ const {
 } = require("../../services");
 
 const getSpecificationControllerFSM = async (req, res) => {
-  const listSpecification = await getSpecificatonFSM();
+  const { companyId } = req;
+  const listSpecification = await getSpecificatonFSM(companyId);
   res.json({ listSpecification, status: "success" });
 };
 const addSpecificationControllerFSM = async (req, res) => {
@@ -24,7 +25,9 @@ const addSpecificationControllerFSM = async (req, res) => {
 
 const delSpecificationControllerFSM = async (req, res) => {
   const { id } = req.params;
-  await delSpecificationFSM(id);
+  const { companyId } = req;
+
+  await delSpecificationFSM(id, companyId);
   res.json({
     status: "success",
     id,

@@ -17,9 +17,9 @@ const loginManagerController = async (req, res) => {
   const token = req.token;
   const { email, password } = req.body;
 
-  const manager = await loginManager(token, email, password);
+  const tokenManager = await loginManager(token, email, password);
 
-  return res.status(200).json({ message: "OK", manager });
+  return res.status(200).json({ message: "OK", email, tokenManager });
 };
 
 module.exports = {

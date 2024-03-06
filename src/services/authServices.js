@@ -22,46 +22,43 @@ const login = async (name, password) => {
     throw new AuthorizationError("Неправильный логин или пароль");
   }
 
-  const token = jwt.sign(
-    {
-      _id: company._id,
-      createAt: company.createAt,
-      roles: company.roles,
-    },
-    process.env.JWT_SECRET
-  );
+  const { _id, employees, roles } = company;
+  const token = await createToken(_id, employees, roles);
 
   return token;
 };
 
 const loginManager = async (token, email, password) => {
-  const companyId = await readToken(token);
-  const manager = await User.findOne({ email });
+  const { companyId } = await readToken(token);
+  const isManager = await User.findOne({ email });
 
-  if (companyId && !manager) {
+  if (!companyId) {
+    throw new AuthorizationError("Авторизуйте организацию");
+  }
+
+  if (companyId && !isManager) {
     const newManager = new User({ email, password, companies: [companyId] });
     await newManager.save();
     await Company.findOneAndUpdate(
       { _id: companyId },
       { $push: { employees: newManager } }
     );
-    return newManager;
+
+    const roles = newManager.roles;
+
+    const tokenManager = await createToken(companyId, [newManager], roles);
+    return tokenManager;
   }
 
-  if (companyId && manager) {
+  if (companyId && isManager) {
     const company = await Company.findOne({ companyId });
     const [isExistManager] = company.employees.filter(
-      ({ email }) => email === manager.email
+      ({ email }) => email === isManager.email
     );
+    const roles = isExistManager.roles;
+    const tokenManager = await createToken(companyId, [isExistManager], roles);
 
-    if (!isExistManager) {
-      await Company.findOneAndUpdate(
-        { _id: companyId },
-        { $push: { employees: manager } }
-      );
-    }
-
-    return manager;
+    return tokenManager;
   }
 };
 
@@ -73,7 +70,18 @@ const readToken = async (token) => {
     }
     companyId = decode._id;
   });
-  return companyId;
+  return { companyId };
 };
 
+const createToken = async (companyId, employees, roles) => {
+  const token = jwt.sign(
+    {
+      _id: companyId,
+      manager: employees,
+      roles: roles,
+    },
+    process.env.JWT_SECRET
+  );
+  return token;
+};
 module.exports = { registration, login, loginManager };
