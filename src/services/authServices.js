@@ -63,11 +63,15 @@ const loginManager = async (token, email, password) => {
 };
 
 const checkCurrentUser = async (token) => {
-  const company = await Company.find({ token }).select({
+  const { companyId } = await readToken(token);
+
+  const company = await Company.findById({ _id: companyId }).select({
     password: 0,
     __v: 0,
     _id: 0,
+    employees: 0,
   });
+  console.log(company);
   return company;
 };
 

@@ -29,7 +29,6 @@ const loginManagerController = async (req, res) => {
 
 const currentUserController = async (req, res) => {
   const { token } = req;
-  console.log(token);
   const company = await checkCurrentUser(token);
   res.json({ message: "success", company });
 };
