@@ -1,4 +1,9 @@
-const { registration, login, loginManager } = require("./authServices");
+const {
+  registration,
+  login,
+  loginManager,
+  checkCurrentUser,
+} = require("./authServices");
 const {
   getContacts,
   getContactByID,
@@ -17,6 +22,7 @@ module.exports = {
   registration,
   login,
   loginManager,
+  checkCurrentUser,
   getContacts,
   getContactByID,
   addContact,

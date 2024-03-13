@@ -62,6 +62,15 @@ const loginManager = async (token, email, password) => {
   }
 };
 
+const checkCurrentUser = async (token) => {
+  const company = await Company.find({ token }).select({
+    password: 0,
+    __v: 0,
+    _id: 0,
+  });
+  return company;
+};
+
 const readToken = async (token) => {
   let companyId = "";
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
@@ -84,4 +93,4 @@ const createToken = async (companyId, employees, roles) => {
   );
   return token;
 };
-module.exports = { registration, login, loginManager };
+module.exports = { registration, login, loginManager, checkCurrentUser };

@@ -1,5 +1,10 @@
 // const { token } = require("morgan");
-const { registration, login, loginManager } = require("../../services");
+const {
+  registration,
+  login,
+  loginManager,
+  checkCurrentUser,
+} = require("../../services");
 
 const registrationController = async (req, res) => {
   const { name, password } = req.body;
@@ -22,8 +27,16 @@ const loginManagerController = async (req, res) => {
   return res.status(200).json({ message: "OK", email, tokenManager });
 };
 
+const currentUserController = async (req, res) => {
+  const { token } = req;
+  console.log(token);
+  const company = await checkCurrentUser(token);
+  res.json({ message: "success", company });
+};
+
 module.exports = {
   registrationController,
   loginController,
   loginManagerController,
+  currentUserController,
 };
