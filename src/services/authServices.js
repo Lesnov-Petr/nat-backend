@@ -81,16 +81,16 @@ const checkCurrentUser = async (token) => {
 };
 
 const readToken = async (token) => {
-  // let companyId = "";
+  let companyId = "";
   let manager = "";
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
     if (err) {
       next(new AuthorizationError("invalid token"));
     }
-    // companyId = decode._id;
+    companyId = decode._id;
     [manager] = decode.manager;
   });
-  return { manager };
+  return { manager, companyId };
 };
 
 const createToken = async (companyId, employees, roles) => {
