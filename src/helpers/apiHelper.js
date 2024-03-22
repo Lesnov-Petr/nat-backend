@@ -6,7 +6,7 @@ const wrapper = (controller, arrayRoles) => {
       (role) => req.roles.includes(role) === true
     );
     if (!result) {
-      throw new RolesError("У Вас отсутствуют права");
+      throw new RolesError("У Вас отсутствуют права, авторизуйтесь менеджером");
     }
     controller(req, res).catch(next);
   };

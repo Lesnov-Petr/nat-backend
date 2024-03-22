@@ -63,27 +63,34 @@ const loginManager = async (token, email, password) => {
 };
 
 const checkCurrentUser = async (token) => {
-  const { companyId } = await readToken(token);
+  const { manager } = await readToken(token);
 
-  const company = await Company.findById({ _id: companyId }).select({
-    password: 0,
-    __v: 0,
-    _id: 0,
-    employees: 0,
-  });
-  console.log(company);
-  return company;
+  const currentUser = {
+    email: manager.email,
+    roles: manager.roles,
+  };
+
+  // const company = await Company.findById({ _id: companyId }).select({
+  //   password: 0,
+  //   __v: 0,
+  //   _id: 0,
+  //   employees: 0,
+  // });
+
+  return currentUser;
 };
 
 const readToken = async (token) => {
-  let companyId = "";
+  // let companyId = "";
+  let manager = "";
   jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
     if (err) {
       next(new AuthorizationError("invalid token"));
     }
-    companyId = decode._id;
+    // companyId = decode._id;
+    [manager] = decode.manager;
   });
-  return { companyId };
+  return { manager };
 };
 
 const createToken = async (companyId, employees, roles) => {

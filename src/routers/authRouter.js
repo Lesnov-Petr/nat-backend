@@ -4,7 +4,6 @@ const { wrapperAuth } = require("../helpers");
 const {
   registrationController,
   loginController,
-  loginManagerController,
 } = require("../controllers/auth");
 
 router

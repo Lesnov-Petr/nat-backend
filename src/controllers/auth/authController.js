@@ -29,8 +29,8 @@ const loginManagerController = async (req, res) => {
 
 const currentUserController = async (req, res) => {
   const { token } = req;
-  const company = await checkCurrentUser(token);
-  res.json({ message: "success", company });
+  const currentUser = await checkCurrentUser(token);
+  res.json({ message: "success", currentUser });
 };
 
 module.exports = {
