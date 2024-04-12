@@ -69,15 +69,21 @@ const checkCurrentUser = async (token) => {
     email: manager.email,
     roles: manager.roles,
   };
-
-  // const company = await Company.findById({ _id: companyId }).select({
-  //   password: 0,
-  //   __v: 0,
-  //   _id: 0,
-  //   employees: 0,
-  // });
-
   return currentUser;
+};
+
+const logOutUser = async (token) => {
+  const { companyId } = await readToken(token);
+  const logOut = await Company.findByIdAndUpdate(
+    { _id: companyId },
+    { $set: { token: null } }
+  );
+
+  if (!logOut) {
+    throw new NotAuthorizedError("Not authorized");
+  }
+
+  return logOut;
 };
 
 const readToken = async (token) => {
@@ -104,4 +110,10 @@ const createToken = async (companyId, employees, roles) => {
   );
   return token;
 };
-module.exports = { registration, login, loginManager, checkCurrentUser };
+module.exports = {
+  registration,
+  login,
+  loginManager,
+  checkCurrentUser,
+  logOutUser,
+};

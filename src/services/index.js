@@ -3,6 +3,7 @@ const {
   login,
   loginManager,
   checkCurrentUser,
+  logOutUser,
 } = require("./authServices");
 const {
   getContacts,
@@ -22,6 +23,7 @@ module.exports = {
   registration,
   login,
   loginManager,
+  logOutUser,
   checkCurrentUser,
   getContacts,
   getContactByID,

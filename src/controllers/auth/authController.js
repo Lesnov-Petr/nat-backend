@@ -4,6 +4,7 @@ const {
   login,
   loginManager,
   checkCurrentUser,
+  logOutUser,
 } = require("../../services");
 
 const registrationController = async (req, res) => {
@@ -33,9 +34,17 @@ const currentUserController = async (req, res) => {
   res.json({ message: "success", currentUser });
 };
 
+const logOutController = async (req, res) => {
+  const { token } = req;
+  await logOutUser(token);
+
+  res.json({ message: "success" });
+};
+
 module.exports = {
   registrationController,
   loginController,
   loginManagerController,
   currentUserController,
+  logOutController,
 };

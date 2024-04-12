@@ -8,7 +8,6 @@ const {
 
 router
   .post("/registration", wrapperAuth(registrationController))
-  .post("/login", wrapperAuth(loginController))
-  .post("/logout", wrapperAuth());
+  .post("/login", wrapperAuth(loginController));
 
 module.exports = { authRouter: router };

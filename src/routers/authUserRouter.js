@@ -4,11 +4,12 @@ const { wrapperAuth } = require("../helpers");
 const {
   loginManagerController,
   currentUserController,
+  logOutController,
 } = require("../controllers/auth");
 
 router
   .post("/login", wrapperAuth(loginManagerController))
-  .post("/logout", wrapperAuth())
+  .post("/logout", wrapperAuth(logOutController))
   .get("/current", wrapperAuth(currentUserController));
 
 module.exports = { authUserRouter: router };
