@@ -56,8 +56,17 @@ const delSpecificationFSM = async (id, companyId) => {
   }
 };
 
+const openSpecificationFSM = async (orderId) => {
+  const order = await SpecificationFSM.findById({ _id: orderId });
+
+  if (!order) {
+    throw new WrongParametersError("Заказ отсутствует");
+  }
+  return order;
+};
 module.exports = {
   getSpecificatonFSM,
   addSpecificationFSM,
   delSpecificationFSM,
+  openSpecificationFSM,
 };

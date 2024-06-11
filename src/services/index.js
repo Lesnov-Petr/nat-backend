@@ -17,6 +17,7 @@ const {
   getSpecificatonFSM,
   addSpecificationFSM,
   delSpecificationFSM,
+  openSpecificationFSM,
 } = require("./servicesSpecificationFSM");
 
 module.exports = {
@@ -33,4 +34,5 @@ module.exports = {
   getSpecificatonFSM,
   addSpecificationFSM,
   delSpecificationFSM,
+  openSpecificationFSM,
 };

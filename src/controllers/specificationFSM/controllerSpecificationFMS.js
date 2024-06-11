@@ -4,12 +4,21 @@ const {
   getSpecificatonFSM,
   addSpecificationFSM,
   delSpecificationFSM,
+  openSpecificationFSM,
 } = require("../../services");
 
 const getSpecificationControllerFSM = async (req, res) => {
   const { companyId } = req;
   const listSpecification = await getSpecificatonFSM(companyId);
   res.json({ listSpecification, status: "success" });
+};
+
+// comments
+
+const openSpecificationFSMController = async (req, res) => {
+  const { id } = req.params;
+  const specificationFSM = await openSpecificationFSM(id);
+  res.json({ specificationFSM, status: "success" });
 };
 const addSpecificationControllerFSM = async (req, res) => {
   const { order } = req.body;
@@ -39,4 +48,5 @@ module.exports = {
   getSpecificationControllerFSM,
   addSpecificationControllerFSM,
   delSpecificationControllerFSM,
+  openSpecificationFSMController,
 };
