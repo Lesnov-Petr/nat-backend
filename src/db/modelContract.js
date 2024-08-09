@@ -24,22 +24,18 @@ const contractSchema = new mongoose.Schema({
 
   kpp: {
     type: Number,
-    unique: true,
   },
 
   okpo: {
     type: Number,
-    unique: true,
   },
 
   ogrn: {
     type: Number,
-    unique: true,
   },
 
   adress: {
     type: String,
-    unique: true,
   },
 
   phone: {
