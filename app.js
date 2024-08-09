@@ -9,6 +9,7 @@ const {
   authUserRouter,
   contactsRouter,
   specificationRouterFSM,
+  contractsRouter,
 } = require("./src/routers");
 
 require("dotenv").config();
@@ -25,6 +26,7 @@ app.use(middlewareAuth);
 app.use("/api/authUser", authUserRouter);
 app.use("/api/specificationFSM", specificationRouterFSM);
 app.use("/api/contacts", contactsRouter);
+app.use("/api/contracts", contractsRouter);
 app.use(errorHandler);
 
 const start = async () => {

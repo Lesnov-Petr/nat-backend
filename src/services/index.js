@@ -20,6 +20,8 @@ const {
   openSpecificationFSM,
 } = require("./servicesSpecificationFSM");
 
+const { addContracts } = require("./servicesContracts");
+
 module.exports = {
   registration,
   login,
@@ -35,4 +37,5 @@ module.exports = {
   addSpecificationFSM,
   delSpecificationFSM,
   openSpecificationFSM,
+  addContracts,
 };
