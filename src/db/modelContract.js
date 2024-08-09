@@ -50,6 +50,12 @@ const contractSchema = new mongoose.Schema({
     type: String,
   },
 
+  companyId: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+
   createAt: {
     type: Date,
     default: Date.now(),

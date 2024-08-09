@@ -1,3 +1,11 @@
-const { addContractsController } = require("./contractsContraller");
+const {
+  addContractsController,
+  delCounterpartyController,
+  getCounterpartyController,
+} = require("./contractsContraller");
 
-module.exports = { addContractsController };
+module.exports = {
+  addContractsController,
+  delCounterpartyController,
+  getCounterpartyController,
+};

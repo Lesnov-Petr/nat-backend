@@ -20,7 +20,11 @@ const {
   openSpecificationFSM,
 } = require("./servicesSpecificationFSM");
 
-const { addContracts } = require("./servicesContracts");
+const {
+  addContracts,
+  delCounterparty,
+  getCounterparty,
+} = require("./servicesContracts");
 
 module.exports = {
   registration,
@@ -38,4 +42,6 @@ module.exports = {
   delSpecificationFSM,
   openSpecificationFSM,
   addContracts,
+  delCounterparty,
+  getCounterparty,
 };
