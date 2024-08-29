@@ -1,11 +1,13 @@
 const {
   addContractsController,
   delCounterpartyController,
-  getCounterpartyController,
+  getListCounterpartyController,
+  openCounterpartyController,
 } = require("./contractsContraller");
 
 module.exports = {
   addContractsController,
   delCounterpartyController,
-  getCounterpartyController,
+  getListCounterpartyController,
+  openCounterpartyController,
 };

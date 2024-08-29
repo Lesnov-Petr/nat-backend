@@ -2,6 +2,7 @@ const { Contracts } = require("../../db");
 const { WrongParametersError } = require("../../helpers");
 const {
   addContracts,
+  getListCounterparty,
   delCounterparty,
   getCounterparty,
 } = require("../../services");
@@ -16,11 +17,17 @@ const addContractsController = async (req, res) => {
   res.json({ couterparty, status: "success" });
 };
 
-const getCounterpartyController = async (req, res) => {
+const getListCounterpartyController = async (req, res) => {
   const { companyId } = req;
 
-  const listCounterpartyes = await getCounterparty(companyId);
+  const listCounterpartyes = await getListCounterparty(companyId);
   res.json({ listCounterpartyes, status: "success" });
+};
+
+const openCounterpartyController = async (req, res) => {
+  const { id } = req.params;
+  const isCounterparty = await getCounterparty(id);
+  res.json({ isCounterparty, status: "success" });
 };
 
 const delCounterpartyController = async (req, res) => {
@@ -32,5 +39,6 @@ const delCounterpartyController = async (req, res) => {
 module.exports = {
   addContractsController,
   delCounterpartyController,
-  getCounterpartyController,
+  getListCounterpartyController,
+  openCounterpartyController,
 };

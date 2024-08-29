@@ -16,11 +16,14 @@ const addContracts = async (newCounterparty) => {
   return couterparty;
 };
 
-const getCounterparty = async (companyId) => {
+const getListCounterparty = async (companyId) => {
   const listCounterpartyes = await Contracts.find({ companyId });
-  console.log(listCounterpartyes);
-
   return listCounterpartyes;
+};
+
+const getCounterparty = async (idCounterparty) => {
+  const counterparty = await Contracts.findById({ _id: idCounterparty });
+  return counterparty;
 };
 
 const delCounterparty = async (id) => {
@@ -31,4 +34,9 @@ const delCounterparty = async (id) => {
   }
 };
 
-module.exports = { addContracts, delCounterparty, getCounterparty };
+module.exports = {
+  addContracts,
+  delCounterparty,
+  getListCounterparty,
+  getCounterparty,
+};

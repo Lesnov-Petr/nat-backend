@@ -23,6 +23,7 @@ const {
 const {
   addContracts,
   delCounterparty,
+  getListCounterparty,
   getCounterparty,
 } = require("./servicesContracts");
 
@@ -43,5 +44,6 @@ module.exports = {
   openSpecificationFSM,
   addContracts,
   delCounterparty,
+  getListCounterparty,
   getCounterparty,
 };

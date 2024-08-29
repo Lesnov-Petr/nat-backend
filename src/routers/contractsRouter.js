@@ -4,12 +4,14 @@ const { wrapper } = require("../helpers");
 const {
   addContractsController,
   delCounterpartyController,
-  getCounterpartyController,
+  getListCounterpartyController,
+  openCounterpartyController,
 } = require("../controllers/contracts");
 const { rolesList } = require("../rolesList/rolesList");
 
 router
-  .get("/", wrapper(getCounterpartyController, rolesList.Manager))
+  .get("/", wrapper(getListCounterpartyController, rolesList.Manager))
+  .get("/:id", wrapper(openCounterpartyController, rolesList.Manager))
   .post("/", wrapper(addContractsController, rolesList.Manager))
   .delete("/:id", wrapper(delCounterpartyController, rolesList.Manager));
 
