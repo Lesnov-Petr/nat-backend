@@ -3,6 +3,7 @@ const {
   delCounterpartyController,
   getListCounterpartyController,
   openCounterpartyController,
+  searchCounterpartyController,
 } = require("./contractsContraller");
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   delCounterpartyController,
   getListCounterpartyController,
   openCounterpartyController,
+  searchCounterpartyController,
 };

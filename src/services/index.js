@@ -25,6 +25,7 @@ const {
   delCounterparty,
   getListCounterparty,
   getCounterparty,
+  searchContracts,
 } = require("./servicesContracts");
 
 module.exports = {
@@ -46,4 +47,5 @@ module.exports = {
   delCounterparty,
   getListCounterparty,
   getCounterparty,
+  searchContracts,
 };

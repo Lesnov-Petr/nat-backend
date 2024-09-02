@@ -18,12 +18,25 @@ const addContracts = async (newCounterparty) => {
 
 const getListCounterparty = async (companyId) => {
   const listCounterpartyes = await Contracts.find({ companyId });
+
   return listCounterpartyes;
 };
 
 const getCounterparty = async (idCounterparty) => {
   const counterparty = await Contracts.findById({ _id: idCounterparty });
   return counterparty;
+};
+
+const searchContracts = async (companyId, value) => {
+  const listCounterpartyes = await Contracts.find({ companyId });
+  const valueNormalize = value.trim().toLowerCase().split();
+
+  const filterContracs = listCounterpartyes.filter((contract) => {
+    const nameCompany = contract.nameCompany.trim().toLowerCase();
+    return nameCompany.includes(valueNormalize);
+  });
+
+  return filterContracs;
 };
 
 const delCounterparty = async (id) => {
@@ -39,4 +52,5 @@ module.exports = {
   delCounterparty,
   getListCounterparty,
   getCounterparty,
+  searchContracts,
 };
