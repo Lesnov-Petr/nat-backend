@@ -27,13 +27,13 @@ const getCounterparty = async (idCounterparty) => {
   return counterparty;
 };
 
-const searchContracts = async (companyId, value) => {
+const searchContracts = async (companyId, query) => {
   const listCounterpartyes = await Contracts.find({ companyId });
-  const valueNormalize = value.trim().toLowerCase().split();
+  const queryNormalize = query.trim().toLowerCase().split();
 
   const filterContracs = listCounterpartyes.filter((contract) => {
     const nameCompany = contract.nameCompany.trim().toLowerCase();
-    return nameCompany.includes(valueNormalize);
+    return nameCompany.includes(queryNormalize);
   });
 
   return filterContracs;

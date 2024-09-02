@@ -27,9 +27,10 @@ const getListCounterpartyController = async (req, res) => {
 };
 const searchCounterpartyController = async (req, res) => {
   const { companyId } = req;
-  const { value } = req.body;
+  const { query } = req.query;
+  console.log(query);
 
-  const filterContracts = await searchContracts(companyId, value);
+  const filterContracts = await searchContracts(companyId, query);
 
   res.json({ filterContracts, status: "success" });
 };
