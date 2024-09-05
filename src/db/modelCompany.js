@@ -18,6 +18,17 @@ const companySchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+    validate: {
+      validator: function (v) {
+        return /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(
+          v
+        );
+      },
+      message: () => `Формат пароля:
+      - длиной минимум 6,
+      - содержит латинские буквы верхнего и нижнего регистров,
+      - содержит цифры`,
+    },
   },
   createAt: {
     type: Date,
