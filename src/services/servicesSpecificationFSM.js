@@ -16,6 +16,13 @@ const addSpecificationFSM = async (req) => {
     volumeProduct,
     degreeProduct,
     valueFSM,
+    dateInvoice,
+    dateDelivery,
+    dateEnd,
+    dateSend,
+    dateDeliveryProducts,
+    planDeliveryProducts,
+    statusFSM,
   } = req.body;
   const { companyId } = req;
   const { manager } = req;
@@ -40,6 +47,13 @@ const addSpecificationFSM = async (req) => {
     valueFSM,
     companyId,
     manager,
+    dateInvoice,
+    dateDelivery,
+    dateEnd,
+    dateSend,
+    dateDeliveryProducts,
+    planDeliveryProducts,
+    statusFSM,
   });
 
   await specificationFSM.save();

@@ -41,6 +41,34 @@ const specificationSchemaFSM = new mongoose.Schema({
     required: true,
   },
 
+  dateInvoice: {
+    type: Date,
+  },
+
+  dateDelivery: {
+    type: Date,
+  },
+
+  dateEnd: {
+    type: Date,
+  },
+
+  dateSend: {
+    type: Date,
+  },
+
+  dateDeliveryProducts: {
+    type: Date,
+  },
+
+  planDeliveryProducts: {
+    type: Date,
+  },
+
+  statusFSM: {
+    type: String,
+  },
+
   companyId: {
     type: String,
     required: true,

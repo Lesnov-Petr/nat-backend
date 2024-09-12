@@ -28,6 +28,10 @@ const getCounterparty = async (idCounterparty) => {
 };
 
 const searchContracts = async (companyId, query) => {
+  if (!query.trim()) {
+    return [];
+  }
+
   const listCounterpartyes = await Contracts.find({ companyId });
   const queryNormalize = query.trim().toLowerCase().split();
 
