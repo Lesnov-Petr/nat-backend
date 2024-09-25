@@ -11,9 +11,9 @@ const addContracts = async (newCounterparty) => {
     throw new WrongParametersError("Организация с таким ИНН существует");
   }
 
-  const couterparty = new Contracts(newCounterparty);
-  await couterparty.save();
-  return couterparty;
+  const counterparty = new Contracts(newCounterparty);
+  await counterparty.save();
+  return counterparty;
 };
 
 const getListCounterparty = async (companyId) => {
@@ -43,12 +43,13 @@ const searchContracts = async (companyId, query) => {
   return filterContracs;
 };
 
-const delCounterparty = async (id) => {
-  const isCompany = await Contracts.findByIdAndRemove({ _id: id });
+const delCounterparty = async (id, companyId) => {
+  const isCompany = await Contracts.findByIdAndRemove({ _id: id, companyId });
 
   if (!isCompany) {
     throw new WrongParametersError("Такой организации не существует");
   }
+  return isCompany.nameCompany;
 };
 
 module.exports = {

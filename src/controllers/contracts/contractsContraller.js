@@ -14,9 +14,9 @@ const addContractsController = async (req, res) => {
   const { companyId } = req;
   newCounterparty.companyId = companyId;
 
-  const couterparty = await addContracts(newCounterparty);
+  const counterparty = await addContracts(newCounterparty);
 
-  res.json({ couterparty, status: "success" });
+  res.json({ counterparty, status: "success" });
 };
 
 const getListCounterpartyController = async (req, res) => {
@@ -43,8 +43,14 @@ const openCounterpartyController = async (req, res) => {
 
 const delCounterpartyController = async (req, res) => {
   const { id } = req.params;
-  await delCounterparty(id);
-  res.json({ message: `Вы удалили контрагента`, status: "success" });
+  const { companyId } = req;
+
+  const nameCompany = await delCounterparty(id, companyId);
+  res.json({
+    status: "success",
+    id,
+    message: `Контрагент ${nameCompany} был удален`,
+  });
 };
 
 module.exports = {
