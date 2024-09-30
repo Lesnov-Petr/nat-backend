@@ -8,7 +8,7 @@ const getSpecificatonFSM = async (companyId) => {
 
 const addSpecificationFSM = async (req) => {
   const {
-    order,
+    name,
     date,
     factory,
     viewAP,
@@ -27,17 +27,17 @@ const addSpecificationFSM = async (req) => {
   const { companyId } = req;
   const { manager } = req;
 
-  const isOrder = await SpecificationFSM.findOne({
-    order,
+  const isName = await SpecificationFSM.findOne({
+    name,
     companyId,
   });
 
-  if (isOrder) {
-    throw new WrongParametersError(`Заказ с номером ${order} существует`);
+  if (isName) {
+    throw new WrongParametersError(`Заказ с номером ${name} существует`);
   }
 
   const specificationFSM = new SpecificationFSM({
-    order,
+    name,
     date,
     factory,
     viewAP,
@@ -61,22 +61,22 @@ const addSpecificationFSM = async (req) => {
 };
 
 const delSpecificationFSM = async (id, companyId) => {
-  const isOrder = await SpecificationFSM.findByIdAndRemove({
+  const isName = await SpecificationFSM.findByIdAndRemove({
     _id: id,
     companyId,
   });
-  if (!isOrder) {
+  if (!isName) {
     throw new WrongParametersError("Такой спецификации нет");
   }
 };
 
 const openSpecificationFSM = async (orderId) => {
-  const order = await SpecificationFSM.findById({ _id: orderId });
+  const name = await SpecificationFSM.findById({ _id: nameId });
 
-  if (!order) {
+  if (!name) {
     throw new WrongParametersError("Заказ отсутствует");
   }
-  return order;
+  return name;
 };
 module.exports = {
   getSpecificatonFSM,

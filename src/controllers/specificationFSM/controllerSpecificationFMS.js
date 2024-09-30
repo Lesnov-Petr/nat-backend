@@ -21,13 +21,13 @@ const openSpecificationFSMController = async (req, res) => {
   res.json({ specificationFSM, status: "success" });
 };
 const addSpecificationControllerFSM = async (req, res) => {
-  const { order } = req.body;
+  const { name } = req.body;
 
   const newSpecificationFSM = await addSpecificationFSM(req);
 
   res.json({
     status: "success",
-    message: `Успешно создан заказ № ${order}`,
+    message: `Успешно создан заказ № ${name}`,
     newSpecificationFSM,
   });
 };

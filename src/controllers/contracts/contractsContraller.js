@@ -28,7 +28,6 @@ const getListCounterpartyController = async (req, res) => {
 const searchCounterpartyController = async (req, res) => {
   const { companyId } = req;
   const { query } = req.query;
-  console.log(query);
 
   const filterContracts = await searchContracts(companyId, query);
 
@@ -45,11 +44,11 @@ const delCounterpartyController = async (req, res) => {
   const { id } = req.params;
   const { companyId } = req;
 
-  const nameCompany = await delCounterparty(id, companyId);
+  const name = await delCounterparty(id, companyId);
   res.json({
     status: "success",
     id,
-    message: `Контрагент ${nameCompany} был удален`,
+    message: `Контрагент ${name} был удален`,
   });
 };
 

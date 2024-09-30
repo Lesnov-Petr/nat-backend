@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const specificationSchemaFSM = new mongoose.Schema({
-  order: {
+  name: {
     type: Number,
     required: true,
   },

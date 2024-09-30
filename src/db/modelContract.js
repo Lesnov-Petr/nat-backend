@@ -10,7 +10,7 @@ const contractSchema = new mongoose.Schema({
     required: true,
   },
 
-  nameCompany: {
+  name: {
     type: String,
     required: true,
     unique: true,
