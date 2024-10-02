@@ -18,6 +18,7 @@ const addContractsController = async (req, res) => {
 
   res.json({ counterparty, status: "success" });
 };
+``;
 
 const getListCounterpartyController = async (req, res) => {
   const { companyId } = req;

@@ -71,7 +71,7 @@ const delSpecificationFSM = async (id, companyId) => {
 };
 
 const openSpecificationFSM = async (orderId) => {
-  const name = await SpecificationFSM.findById({ _id: nameId });
+  const name = await SpecificationFSM.findById({ _id: orderId });
 
   if (!name) {
     throw new WrongParametersError("Заказ отсутствует");
