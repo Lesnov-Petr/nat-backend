@@ -1,12 +1,12 @@
 const { SpecificationFSM } = require("../db");
 const { WrongParametersError } = require("../helpers");
 
-const getSpecificatonFSM = async (companyId) => {
+const getStamps = async (companyId) => {
   const specificationFSM = await SpecificationFSM.find({ companyId });
   return specificationFSM;
 };
 
-const addSpecificationFSM = async (req) => {
+const addStamps = async (req) => {
   const {
     name,
     date,
@@ -60,7 +60,7 @@ const addSpecificationFSM = async (req) => {
   return specificationFSM;
 };
 
-const delSpecificationFSM = async (id, companyId) => {
+const delStamps = async (id, companyId) => {
   const isName = await SpecificationFSM.findByIdAndRemove({
     _id: id,
     companyId,
@@ -70,7 +70,7 @@ const delSpecificationFSM = async (id, companyId) => {
   }
 };
 
-const openSpecificationFSM = async (orderId) => {
+const openStams = async (orderId) => {
   const name = await SpecificationFSM.findById({ _id: orderId });
 
   if (!name) {
@@ -79,8 +79,8 @@ const openSpecificationFSM = async (orderId) => {
   return name;
 };
 module.exports = {
-  getSpecificatonFSM,
-  addSpecificationFSM,
-  delSpecificationFSM,
-  openSpecificationFSM,
+  getStamps,
+  addStamps,
+  delStamps,
+  openStams,
 };

@@ -1,13 +1,13 @@
 const {
-  getSpecificationControllerFSM,
-  addSpecificationControllerFSM,
-  delSpecificationControllerFSM,
-  openSpecificationFSMController,
+  getStampsController,
+  addStampsController,
+  delStampsController,
+  openStampsController,
 } = require("./controllerSpecificationFMS");
 
 module.exports = {
-  getSpecificationControllerFSM,
-  addSpecificationControllerFSM,
-  delSpecificationControllerFSM,
-  openSpecificationFSMController,
+  getStampsController,
+  addStampsController,
+  delStampsController,
+  openStampsController,
 };

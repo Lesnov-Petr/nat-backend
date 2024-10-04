@@ -14,11 +14,11 @@ const {
 } = require("./servicesContacts");
 
 const {
-  getSpecificatonFSM,
-  addSpecificationFSM,
-  delSpecificationFSM,
-  openSpecificationFSM,
-} = require("./servicesSpecificationFSM");
+  getStamps,
+  addStamps,
+  delStamps,
+  openStams,
+} = require("./servicesStamps");
 
 const {
   addContracts,
@@ -39,10 +39,10 @@ module.exports = {
   addContact,
   deleteContactById,
   updateContactBiId,
-  getSpecificatonFSM,
-  addSpecificationFSM,
-  delSpecificationFSM,
-  openSpecificationFSM,
+  getStamps,
+  addStamps,
+  delStamps,
+  openStams,
   addContracts,
   delCounterparty,
   getListCounterparty,

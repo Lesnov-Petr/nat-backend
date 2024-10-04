@@ -8,7 +8,7 @@ const {
   authRouter,
   authUserRouter,
   contactsRouter,
-  specificationRouterFSM,
+  stamps,
   contractsRouter,
 } = require("./src/routers");
 
@@ -24,7 +24,7 @@ app.use(morgan("tiny"));
 app.use("/api/auth", authRouter);
 app.use(middlewareAuth);
 app.use("/api/authUser", authUserRouter);
-app.use("/api/specificationFSM", specificationRouterFSM);
+app.use("/api/stamps", stamps);
 app.use("/api/contacts", contactsRouter);
 app.use("/api/contracts", contractsRouter);
 app.use(errorHandler);

@@ -1,29 +1,29 @@
 const { SpecificationFSM } = require("../../db");
 const { WrongParametersError } = require("../../helpers");
 const {
-  getSpecificatonFSM,
-  addSpecificationFSM,
-  delSpecificationFSM,
-  openSpecificationFSM,
+  getStamps,
+  addStamps,
+  delStamps,
+  openStams,
 } = require("../../services");
 
-const getSpecificationControllerFSM = async (req, res) => {
+const getStampsController = async (req, res) => {
   const { companyId } = req;
-  const listSpecification = await getSpecificatonFSM(companyId);
+  const listSpecification = await getStamps(companyId);
   res.json({ listSpecification, status: "success" });
 };
 
 // comments
 
-const openSpecificationFSMController = async (req, res) => {
+const openStampsController = async (req, res) => {
   const { id } = req.params;
-  const specificationFSM = await openSpecificationFSM(id);
+  const specificationFSM = await openStams(id);
   res.json({ specificationFSM, status: "success" });
 };
-const addSpecificationControllerFSM = async (req, res) => {
+const addStampsController = async (req, res) => {
   const { name } = req.body;
 
-  const newSpecificationFSM = await addSpecificationFSM(req);
+  const newSpecificationFSM = await addStamps(req);
 
   res.json({
     status: "success",
@@ -32,11 +32,11 @@ const addSpecificationControllerFSM = async (req, res) => {
   });
 };
 
-const delSpecificationControllerFSM = async (req, res) => {
+const delStampsController = async (req, res) => {
   const { id } = req.params;
   const { companyId } = req;
 
-  await delSpecificationFSM(id, companyId);
+  await delStamps(id, companyId);
   res.json({
     status: "success",
     id,
@@ -45,8 +45,8 @@ const delSpecificationControllerFSM = async (req, res) => {
 };
 
 module.exports = {
-  getSpecificationControllerFSM,
-  addSpecificationControllerFSM,
-  delSpecificationControllerFSM,
-  openSpecificationFSMController,
+  getStampsController,
+  addStampsController,
+  delStampsController,
+  openStampsController,
 };
