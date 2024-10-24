@@ -46,6 +46,8 @@ const deleteTypeAlcohol = async (req) => {
   if (!delByIdTypeAlcoholawait) {
     throw WrongParametersError(`Так алкогольной продукции отсутствует`);
   }
+
+  return id;
 };
 
 module.exports = {

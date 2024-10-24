@@ -26,8 +26,8 @@ const updateTypeAlcoholController = async (req, res) => {
 };
 
 const deleteTypeAlcoholController = async (req, res) => {
-  await deleteTypeAlcohol(req);
-  res.json({ status: "success" });
+  const id = await deleteTypeAlcohol(req);
+  res.json({ status: "success", id });
 };
 
 module.exports = {
