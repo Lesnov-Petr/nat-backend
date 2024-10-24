@@ -17,4 +17,4 @@ router
   .post("/", wrapper(addContractsController, rolesList.Manager))
   .delete("/:id", wrapper(delCounterpartyController, rolesList.Manager));
 
-module.exports = { contractsRouter: router };
+module.exports = { routerContracts: router };

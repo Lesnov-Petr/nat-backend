@@ -12,4 +12,4 @@ router
   .post("/logout", wrapperAuth(logOutController))
   .get("/current", wrapperAuth(currentUserController));
 
-module.exports = { authUserRouter: router };
+module.exports = { routerAuthUser: router };

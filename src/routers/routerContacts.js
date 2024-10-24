@@ -18,4 +18,4 @@ router
   .delete("/:id", wrapper(deleteContactByIdController))
   .put("/:id", wrapper(updateContactBiIdController));
 
-module.exports = { contactsRouter: router };
+module.exports = { routerContacts: router };

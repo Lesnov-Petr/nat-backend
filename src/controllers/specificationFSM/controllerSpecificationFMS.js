@@ -1,5 +1,3 @@
-const { SpecificationFSM } = require("../../db");
-const { WrongParametersError } = require("../../helpers");
 const {
   getStamps,
   addStamps,
@@ -13,8 +11,6 @@ const getStampsController = async (req, res) => {
   res.json({ listSpecification, status: "success" });
 };
 
-// comments
-
 const openStampsController = async (req, res) => {
   const { id } = req.params;
   const specificationFSM = await openStams(id);
@@ -22,7 +18,6 @@ const openStampsController = async (req, res) => {
 };
 const addStampsController = async (req, res) => {
   const { name } = req.body;
-
   const newSpecificationFSM = await addStamps(req);
 
   res.json({

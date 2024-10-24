@@ -5,11 +5,12 @@ const { connectDB } = require("./src/db");
 const { errorHandler } = require("./src/helpers");
 const { middlewareAuth } = require("./src/middlewares");
 const {
-  authRouter,
-  authUserRouter,
-  contactsRouter,
-  stamps,
-  contractsRouter,
+  routerContacts,
+  routerAuth,
+  routerStamps,
+  routerAuthUser,
+  routerContracts,
+  routerTypeAlcohol,
 } = require("./src/routers");
 
 require("dotenv").config();
@@ -21,12 +22,13 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 
-app.use("/api/auth", authRouter);
+app.use("/api/auth", routerAuth);
 app.use(middlewareAuth);
-app.use("/api/authUser", authUserRouter);
-app.use("/api/stamps", stamps);
-app.use("/api/contacts", contactsRouter);
-app.use("/api/contracts", contractsRouter);
+app.use("/api/authUser", routerAuthUser);
+app.use("/api/stamps", routerStamps);
+app.use("/api/contacts", routerContacts);
+app.use("/api/contracts", routerContracts);
+app.use("/api/typeAlcohol", routerTypeAlcohol);
 app.use(errorHandler);
 
 const start = async () => {

@@ -1,13 +1,15 @@
-const { contactsRouter } = require("./routerContacts");
-const { authRouter } = require("./authRouter");
-const { stamps } = require("./stamps");
-const { authUserRouter } = require("./authUserRouter");
-const { contractsRouter } = require("./contractsRouter");
+const { routerContacts } = require("./routerContacts");
+const { routerAuth } = require("./routerAuth");
+const { routerStamps } = require("./routerStamps");
+const { routerAuthUser } = require("./routerAuthUser");
+const { routerContracts } = require("./routerContracts");
+const { routerTypeAlcohol } = require("./routerTypeAlcohol");
 
 module.exports = {
-  contactsRouter,
-  authRouter,
-  stamps,
-  authUserRouter,
-  contractsRouter,
+  routerContacts,
+  routerAuth,
+  routerStamps,
+  routerAuthUser,
+  routerContracts,
+  routerTypeAlcohol,
 };

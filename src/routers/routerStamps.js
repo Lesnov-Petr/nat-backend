@@ -15,4 +15,4 @@ router
   .post("/", wrapper(addStampsController, rolesList.Manager))
   .delete("/:id", wrapper(delStampsController, rolesList.Manager));
 
-module.exports = { stamps: router };
+module.exports = { routerStamps: router };

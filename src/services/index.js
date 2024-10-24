@@ -28,6 +28,13 @@ const {
   searchContracts,
 } = require("./servicesContracts");
 
+const {
+  addTypeAlcohol,
+  getTypeAlcohol,
+  updateTypeAlcohol,
+  deleteTypeAlcohol,
+} = require("./servicesTypeAlcohol");
+
 module.exports = {
   registration,
   login,
@@ -48,4 +55,8 @@ module.exports = {
   getListCounterparty,
   getCounterparty,
   searchContracts,
+  addTypeAlcohol,
+  getTypeAlcohol,
+  updateTypeAlcohol,
+  deleteTypeAlcohol,
 };
