@@ -42,7 +42,9 @@ const updateTypeAlcohol = async (req) => {
 
 const deleteTypeAlcohol = async (req) => {
   const { id } = req.params;
-  const delByIdTypeAlcoholawait = TypeAlcohol.findByIdAndRemove({ _id: id });
+  const delByIdTypeAlcoholawait = await TypeAlcohol.findByIdAndRemove({
+    _id: id,
+  });
   if (!delByIdTypeAlcoholawait) {
     throw WrongParametersError(`Так алкогольной продукции отсутствует`);
   }
