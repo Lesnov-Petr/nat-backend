@@ -3,6 +3,7 @@ const {
   readTypeAlcoholController,
   updateTypeAlcoholController,
   deleteTypeAlcoholController,
+  filterTypeAlcoholController,
 } = require("./controllerTypeAlcohol");
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   readTypeAlcoholController,
   updateTypeAlcoholController,
   deleteTypeAlcoholController,
+  filterTypeAlcoholController,
 };

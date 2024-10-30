@@ -3,6 +3,7 @@ const {
   getTypeAlcohol,
   updateTypeAlcohol,
   deleteTypeAlcohol,
+  filterListTypeAlcohol,
 } = require("../../services");
 
 const createTypeAlcoholController = async (req, res) => {
@@ -30,9 +31,20 @@ const deleteTypeAlcoholController = async (req, res) => {
   res.json({ status: "success", id });
 };
 
+const filterTypeAlcoholController = async (req, res) => {
+  console.log("LOG");
+
+  const { query } = req.query;
+  console.log(query);
+
+  const filterTypeAlcohol = await filterListTypeAlcohol(query);
+  res.json({ status: "success", filterTypeAlcohol });
+};
+
 module.exports = {
   createTypeAlcoholController,
   readTypeAlcoholController,
   updateTypeAlcoholController,
   deleteTypeAlcoholController,
+  filterTypeAlcoholController,
 };

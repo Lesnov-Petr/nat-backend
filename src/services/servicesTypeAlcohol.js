@@ -52,9 +52,25 @@ const deleteTypeAlcohol = async (req) => {
   return id;
 };
 
+const filterListTypeAlcohol = async (query) => {
+  if (!query.trim()) {
+    return [];
+  }
+  const listTypeAlcohol = await TypeAlcohol.find({});
+  const queryNormalize = query.trim().toLowerCase().split();
+
+  const filterTypeAlcohol = listTypeAlcohol.filter((typeAlcohol) => {
+    const name = typeAlcohol.name.trim().toLowerCase();
+    return name.includes(queryNormalize);
+  });
+
+  return filterTypeAlcohol;
+};
+
 module.exports = {
   addTypeAlcohol,
   getTypeAlcohol,
   updateTypeAlcohol,
   deleteTypeAlcohol,
+  filterListTypeAlcohol,
 };

@@ -33,6 +33,7 @@ const {
   getTypeAlcohol,
   updateTypeAlcohol,
   deleteTypeAlcohol,
+  filterListTypeAlcohol,
 } = require("./servicesTypeAlcohol");
 
 module.exports = {
@@ -59,4 +60,5 @@ module.exports = {
   getTypeAlcohol,
   updateTypeAlcohol,
   deleteTypeAlcohol,
+  filterListTypeAlcohol,
 };
