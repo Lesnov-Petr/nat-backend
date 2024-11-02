@@ -17,7 +17,7 @@ const specificationSchemaFSM = new mongoose.Schema({
   },
 
   viewAP: {
-    type: String,
+    type: Object,
     required: true,
   },
 
