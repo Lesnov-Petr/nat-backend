@@ -1,4 +1,5 @@
 const { SpecificationFSM } = require("../db");
+const { Contracts } = require("../db");
 const { WrongParametersError } = require("../helpers");
 
 const getStamps = async (companyId) => {
@@ -27,6 +28,8 @@ const addStamps = async (req) => {
   const { companyId } = req;
   const { manager } = req;
 
+  const dataManager = { email: manager[0].email, id: manager[0]._id };
+
   const isName = await SpecificationFSM.findOne({
     name,
     companyId,
@@ -46,7 +49,7 @@ const addStamps = async (req) => {
     degreeProduct,
     valueFSM,
     companyId,
-    manager,
+    manager: dataManager,
     dateInvoice,
     dateDelivery,
     dateEnd,
@@ -78,9 +81,32 @@ const openStams = async (orderId) => {
   }
   return name;
 };
+
+const updateStamps = async (req) => {
+  const { companyId } = req;
+  const { id } = req.params;
+  const { body } = req;
+  const { factory } = req.body;
+  const orderStamps = await SpecificationFSM.find({ _id: id, companyId });
+  if (!orderStamps.length) {
+    throw new WrongParametersError("Заказ отсутствует");
+  }
+
+  const searchFactory = await Contracts.find({ companyId, _id: factory });
+  if (!searchFactory.length) {
+    throw new WrongParametersError("Производитель не найден.");
+  }
+  req.body.factory = searchFactory[0];
+
+  await SpecificationFSM.findByIdAndUpdate(id, { $set: body });
+  const updatedStamps = await SpecificationFSM.findById(id);
+  return updatedStamps;
+};
+
 module.exports = {
   getStamps,
   addStamps,
   delStamps,
   openStams,
+  updateStamps,
 };

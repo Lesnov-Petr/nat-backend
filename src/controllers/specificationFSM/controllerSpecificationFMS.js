@@ -3,7 +3,19 @@ const {
   addStamps,
   delStamps,
   openStams,
+  updateStamps,
 } = require("../../services");
+
+const getDataString = (date) => {
+  const day = pad(date.getDate());
+  const month = pad(date.getMonth() + 1);
+  const dateString = day + "." + month + "." + date.getFullYear();
+  return dateString;
+};
+
+const pad = (value) => {
+  return String(value).padStart(2, "0");
+};
 
 const getStampsController = async (req, res) => {
   const { companyId } = req;
@@ -39,9 +51,24 @@ const delStampsController = async (req, res) => {
   });
 };
 
+const updateStampsController = async (req, res) => {
+  const date = new Date();
+  const { manager } = req;
+  const actionsManager = {
+    manager: manager[0].email,
+    date: getDataString(date),
+    body: req.body,
+  };
+
+  const updatedStamps = await updateStamps(req);
+
+  res.json({ state: "success", updatedStamps, actionsManager });
+};
+
 module.exports = {
   getStampsController,
   addStampsController,
   delStampsController,
   openStampsController,
+  updateStampsController,
 };

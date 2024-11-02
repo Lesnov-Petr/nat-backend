@@ -3,6 +3,7 @@ const {
   addStampsController,
   delStampsController,
   openStampsController,
+  updateStampsController,
 } = require("./controllerSpecificationFMS");
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   addStampsController,
   delStampsController,
   openStampsController,
+  updateStampsController,
 };

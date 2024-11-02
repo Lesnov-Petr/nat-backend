@@ -6,6 +6,7 @@ const {
   addStampsController,
   delStampsController,
   openStampsController,
+  updateStampsController,
 } = require("../controllers/specificationFSM");
 const { rolesList } = require("../rolesList/rolesList");
 
@@ -13,6 +14,7 @@ router
   .get("/", wrapper(getStampsController, rolesList.User))
   .get("/:id", wrapper(openStampsController, rolesList.User))
   .post("/", wrapper(addStampsController, rolesList.Manager))
-  .delete("/:id", wrapper(delStampsController, rolesList.Manager));
+  .delete("/:id", wrapper(delStampsController, rolesList.Manager))
+  .patch("/:id", wrapper(updateStampsController, rolesList.Manager));
 
 module.exports = { routerStamps: router };

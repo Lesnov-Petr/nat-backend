@@ -18,6 +18,7 @@ const {
   addStamps,
   delStamps,
   openStams,
+  updateStamps,
 } = require("./servicesStamps");
 
 const {
@@ -61,4 +62,5 @@ module.exports = {
   updateTypeAlcohol,
   deleteTypeAlcohol,
   filterListTypeAlcohol,
+  updateStamps,
 };

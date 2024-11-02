@@ -12,7 +12,7 @@ const specificationSchemaFSM = new mongoose.Schema({
   },
 
   factory: {
-    type: String,
+    type: Object,
     required: true,
   },
 
@@ -39,6 +39,10 @@ const specificationSchemaFSM = new mongoose.Schema({
   valueFSM: {
     type: Number,
     required: true,
+  },
+
+  numInvoice: {
+    type: String,
   },
 
   dateInvoice: {
