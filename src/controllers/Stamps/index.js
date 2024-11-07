@@ -4,7 +4,7 @@ const {
   delStampsController,
   openStampsController,
   updateStampsController,
-} = require("./controllerSpecificationFMS");
+} = require("./controllerStamps");
 
 module.exports = {
   getStampsController,

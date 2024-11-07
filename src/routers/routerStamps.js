@@ -7,7 +7,7 @@ const {
   delStampsController,
   openStampsController,
   updateStampsController,
-} = require("../controllers/specificationFSM");
+} = require("../controllers/Stamps");
 const { rolesList } = require("../rolesList/rolesList");
 
 router
