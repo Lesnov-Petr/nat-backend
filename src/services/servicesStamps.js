@@ -92,7 +92,9 @@ const updateStamps = async (req) => {
     throw new WrongParametersError("Заказ отсутствует");
   }
 
-  const searchFactory = await Contracts.find({ companyId, _id: factory });
+  console.log(factory._id);
+
+  const searchFactory = await Contracts.find({ companyId, _id: factory._id });
   if (!searchFactory.length) {
     throw new WrongParametersError("Производитель не найден.");
   }
